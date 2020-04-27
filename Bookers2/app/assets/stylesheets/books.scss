@@ -1,0 +1,44 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.book-edit-icon{
+    background-color: green;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+}
+
+.book-destroy-icon{
+	background-color: red;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.book-edit-icon:hover{
+	color: white;
+}
+
+.book-destroy-icon:hover{
+	color: white;
+}
+
+.margin-top-5{
+	margin-top: 5px;
+}
+
+.book-index:hover{
+	background-color: rgba(128,128,128,0.3);
+}
+
+.hover-visited:hover{
+	background-color:black;
+	padding: 1px 0;
+}
+
+.hover-visited:visited{
+	color: grey;
+}

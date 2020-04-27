@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/23d68cbf4b.js" crossorigin="anonymous"></script>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-box">
+          <span class="header-title" style="font-size: 25px">Bookers</span>
+          <div class="header-list">
+            <nav>
+              <ul>
+                <% if user_signed_in? %>
+                  <div class="sign-in-icon">
+                    <%= link_to user_path(current_user) do%>
+                      <i class="fas fa-home"></i>
+                      <li class="header-list-item">Home</li>
+                    <% end %>
+                  </a>
+                  </div>
+                  <div class="sign-in-icon">
+                    <%= link_to users_path do%>
+                      <i class="fas fa-user"></i>
+                      <li class="header-list-item">Users</li>
+                    <% end %>
+                  </div>
+                  <div class="sign-in-icon">
+                    <%= link_to books_path do%>
+                      <i class="fas fa-book"></i>
+                      <li class="header-list-item">Books</li>
+                    <% end %>
+                  </div>
+                  <div class="sign-in-icon">
+                     <%= link_to destroy_user_session_path,method: :delete do%>
+                        <i class="fas fa-sign-out-alt"></i>
+                        <li class="header-list-item">logout</li>
+                     <% end %>
+                  </div>
+                <% else %>
+                  <div class="sign-in-icon">
+                   <%= link_to root_path do%>
+                      <i class="fas fa-home"></i>
+                      <li class="header-list-item">Home</li>
+                    <% end %>
+                  </div>
+                  <div class="sign-in-icon">
+                    <%= link_to home_about_path do%>
+                        <i class="fas fa-link"></i>
+                      <li class="header-list-item">About</li>
+                    <% end %>
+                  </div>
+                  <div class="sign-in-icon">
+                    <%= link_to new_user_registration_path do%>
+                       <i class="far fa-edit"></i>
+                      <li class="header-list-item"> sign up</li>
+                    <% end %>
+                  </div>
+                  <div class="sign-in-icon">
+                    <%= link_to new_user_session_path do%>
+                      <i class="fas fa-sign-in-alt"></i>
+                      <li class="header-list-item">login</li>
+                    <% end %>
+                  </div>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <% if flash[:notice] %>
+        <p class="flash">
+          <%= flash[:notice] %>
+        </p>
+      <% end %>
+    </div>
+    <%= yield %>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-3 col-xs-offset-9">
+            <p>CopyRight Infratop.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

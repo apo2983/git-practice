@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<%= render 'devise/shared/list',user:@user,book:@book_new %>
+		<div class="col-xs-9">
+			<h2>Book detail</h2>
+			<table class="table">
+				<tbody>
+					<td><%=link_to user_path(@user.id) do%>
+							<%= attachment_image_tag @user, :profile_image,format:'jpeg',fallback:"no_image.jpg",size:'100x100'%>
+							<div><%= @user.name  %></div>
+							<% end %>
+					</td>
+					<td><%= @book.title %></td>
+					<td><%= @book.body %></td>
+					<% if @book.user == current_user%>
+						<td><%= link_to "Edit",edit_book_path(@book.id),class:'book-edit-icon'%>
+						</td>
+						<td><%= link_to "Destroy",book_path(@book.id),method: :delete,class:'book-destroy-icon'%>
+						</td>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
