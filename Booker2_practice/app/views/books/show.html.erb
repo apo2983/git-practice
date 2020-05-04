@@ -1,0 +1,17 @@
+<%= render 'users/list' ,user: @user,book: @book_new%>
+<div class="col-xs-9">
+	<h2>Book detail</h2>
+	<table class="table">
+		<tr>
+			<td>
+				<%= attachment_image_tag @user,:profile_image,format: 'jpeg',fallback: 'no_image.jpg',size: '50x50' %>
+			</td>
+			<td><%= @book.title %></td>
+			<td><%= @book.body %></td>
+			<% if current_user.id == @user.id %>
+				<td><%= link_to "Edit" ,edit_book_path(@book.id),class:'btn btn-success' %></td>
+				<td><%= link_to "Destroy" ,book_path(@book.id),method: :delete,class:'btn btn-danger' %></td>
+			<% end %>
+		</tr>
+	</table>
+</div>

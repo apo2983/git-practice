@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+     <script src="https://kit.fontawesome.com/23d68cbf4b.js" crossorigin="anonymous"></script>
+    <title>Booker2Practice</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <h3>Bookers</h3>
+          <div class="list-box">
+            <ul>
+              <% if user_signed_in? %>
+              <li>
+                 <%= link_to user_path(current_user.id) do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">Home</p>
+                <% end %>
+              </li>
+              <li>
+                 <%= link_to users_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">Users</p>
+                <% end %>
+              </li>
+              <li>
+                 <%= link_to books_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">Books</p>
+                <% end %>
+              <li>
+                 <%= link_to destroy_user_session_path,method: :delete do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">logout</p>
+                <% end %>
+              </li>
+              <% else %>
+                <li>
+                 <%= link_to root_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">Home</p>
+                <% end %>
+                </li>
+                <li>
+                 <%= link_to home_about_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">About</p>
+                <% end %>
+               </li>
+                <li>
+                 <%= link_to new_user_registration_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">sign up</p>
+                <% end %>
+                <li>
+                 <%= link_to new_user_session_path do %>
+                  <i class="fas fa-home"></i>
+                  <p class="header-icon">login</p>
+                <% end %>
+              <% end%>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <% if flash[:notice]%>
+      <p style='color: green'><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+    <div class="container">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

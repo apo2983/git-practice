@@ -1,0 +1,31 @@
+<div class="col-xs-3">
+	<h2>User info</h2>
+	<%= attachment_image_tag user,:profile_image,format:'jpeg',fallback:'no_image.jpg',size:'100x100' %>
+	<table class="table">
+		<tr>
+			<th>name</th>
+			<td><%= user.name %></th>
+		</tr>
+		<tr>
+			<th>introduction</th>
+			<td><%= user.introduction %></th>
+		</tr>
+	</table>
+	<%= link_to edit_book_path(user.id) do%>
+		<i class="fas fa-home col-xs-12 user-edit-icon"></i>
+	<% end %>
+	<h2>New book</h2>
+	<%= form_for(book,url:books_path,method: :post) do |f| %>
+		<div class="field">
+			<p>Title</p>
+			<%= f.text_field :title %>
+		</div>
+		<div class="field">
+			<p>Opinion</p>
+			<%= f.text_area :body %>
+		</div>
+		<div class="actions">
+			<%= f.submit "Create Book",class:'btn btn-primary col-xs-12' %>
+		</div>
+	<% end %>
+</div>
